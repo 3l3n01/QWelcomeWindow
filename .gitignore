@@ -5,3 +5,7 @@
 # pycharm project files
 /.idea
 
+/build
+/dist
+/QWelcomeWindow.egg-info
+

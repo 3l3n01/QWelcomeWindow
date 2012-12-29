@@ -79,6 +79,16 @@ class QWelcomeWindow(QMainWindow):
 
     def __init__(self, title, icon, recents, quick_start_actions,
                  parent=None):
+        """
+        Creates the window.
+
+        :param title: Window title (str)
+        :param icon:  Window icon (QIcon)
+        :param recents: List of recent files ([str])
+        :param quick_start_actions: List of quick start actions. A quick start
+        action is a tuple made up of a QIcon and a string (QIcon, str).
+        :param parent: The window parent
+        """
         assert isinstance(icon, QIcon)
         QMainWindow.__init__(self, parent)
         self.ui = ui.Ui_MainWindow()
