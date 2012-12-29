@@ -1,0 +1,11 @@
+Install
+-------------
+
+
+- Make sure python setuptools is installed.
+
+- Execute the following command:	
+	python setup.py install
+
+- Try the example by running the following command (on windows, Python27/Scripts must be in the path)
+ 	QWelcomeWindow_Example

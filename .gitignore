@@ -1,0 +1,7 @@
+# compiled src modules
+*.pyc
+*.pyo
+
+# pycharm project files
+/.idea
+
