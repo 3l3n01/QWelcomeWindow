@@ -115,7 +115,10 @@ QListView::item:hover
 
 QLabel
 {
-    padding: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 3px;
+    padding-right: 0px;
     border: none;
     background-color: %(title_background_color)s;
 };
@@ -149,9 +152,17 @@ class QWelcomeWidget(QtGui.QWidget):
     # signal emitted when a quick start action is triggered
     quick_start_action_triggered = QtCore.Signal(str)
     # signal emitted when a recent action is triggered
-    recent_action_triggered = QtCore.Signal(str)
+    recent_action_triggered = QtCore.Signal(str, str)
 
-    def __init__(self, app_name, app_icon, color_scheme=None):
+    def set_app_icon(self, app_icon):
+        if app_icon:
+            self.ui.lblIcon.setPixmap(app_icon.pixmap(32, 32))
+
+    def set_app_name(self, app_name):
+        self.ui.lblTitle.setText("Welcome to %s" % app_name)
+
+    def __init__(self, parent=None,
+                 app_name="", app_icon=None, color_scheme=None):
         """
         Create the welcome window.
 
@@ -170,9 +181,8 @@ class QWelcomeWidget(QtGui.QWidget):
         self.ui = widget_ui.Ui_Form()
         self.ui.setupUi(self)
         self.set_color_scheme(color_scheme)
-        if app_icon:
-            self.ui.lblIcon.setPixmap(app_icon.pixmap(32, 32))
-        self.ui.lblTitle.setText(self.ui.lblTitle.text() % app_name)
+        self.set_app_icon(app_icon)
+        self.set_app_name(app_name)
 
     def set_color_scheme(self, color_scheme):
         """
@@ -193,7 +203,7 @@ class QWelcomeWidget(QtGui.QWidget):
             "hover_color": color_scheme.hover_color}
         self.setStyleSheet(stylesheet)
 
-    def add_action(self, action_type, action_txt, action_icon=None):
+    def add_action(self, action_type, action_txt, action_icon=None, data=None):
         """
         Adds an action to one of the two list widgets (recent or quick start
         actions).
@@ -213,6 +223,10 @@ class QWelcomeWidget(QtGui.QWidget):
         item = QtGui.QListWidgetItem(action_txt)
         if action_icon:
             item.setIcon(action_icon)
+        if data:
+            item.setData(32, data)
+            item.setData(3, data)
+        item.setData(0, action_txt)
         if action_type == self.ActionType.QuickStart:
             self.ui.lwQuickStart.addItem(item)
         else:
@@ -225,7 +239,7 @@ class QWelcomeWidget(QtGui.QWidget):
             item = self.ui.lwRecents.item(index)
         item.setText(text)
 
-    def clear_recent_files(self):
+    def clear_recent_actions(self):
         """
         Clears the recent actions list
         """
@@ -234,7 +248,7 @@ class QWelcomeWidget(QtGui.QWidget):
     @QtCore.Slot(QtGui.QListWidgetItem)
     def on_lwRecents_itemClicked(self, item):
         self.ui.lwQuickStart.clearSelection()
-        self.recent_action_triggered.emit(item.text())
+        self.recent_action_triggered.emit(item.text(), item.data(32))
 
     @QtCore.Slot(QtGui.QListWidgetItem)
     def on_lwQuickStart_itemClicked(self, item):
@@ -248,7 +262,7 @@ class QWelcomeWidget(QtGui.QWidget):
 widget = None
 theme = None
 
-def on_recent_acton_clicked(text):
+def on_recent_acton_clicked(text, data):
     """
     Shows a message box with the name of the triggered recent action.
     """
@@ -298,8 +312,8 @@ def main():
 
     # create the widget
     global widget
-    widget = QWelcomeWidget("QWelcomeWindow",
-                            style.standardIcon(style.SP_ComputerIcon))
+    widget = QWelcomeWidget(app_name="QWelcomeWindow",
+                            app_icon=style.standardIcon(style.SP_ComputerIcon))
 
     # add quick start actions
     widget.add_action(QWelcomeWidget.ActionType.QuickStart, "Open something",
