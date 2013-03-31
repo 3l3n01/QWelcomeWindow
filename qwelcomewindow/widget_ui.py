@@ -1,14 +1,12 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-# QWelcomeWidget - An easy to customize welcome window
 
-# Copyright 2013, Colin Duquesnoy <colin.duquesnoy@gmail.com>
+# Form implementation generated from reading ui file 'widget.ui'
 #
-# This software is released under the LGPLv3 license.
-# You should have received a copy of the GNU Lesser General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
+# Created: Mon Apr  1 00:05:13 2013
+#      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
+# WARNING! All changes made in this file will be lost!
+
 from PySide import QtCore, QtGui
 
 class Ui_Form(object):

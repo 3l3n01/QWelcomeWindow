@@ -15,7 +15,7 @@ Setup script for install QWelcomeWidget
 from setuptools import setup
 
 setup(
-    name='QWelcomeWidget',
+    name='QWelcomeWindow',
     version='1.0',
     packages=['qwelcomewindow'],
     package_data={'qwelcomewindow': ["*.ui"]},
