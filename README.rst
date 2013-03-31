@@ -48,8 +48,9 @@ Here is an example sample code::
 
     # create the widget, give it the app name, icon and a color scheme (you can
     # create your own)
-    widget = qwelcomewindow.QWelcomeWidget("Your app name",
-        QIcon("Your_AppIcon.png"), qwelcomewindow.ColorScheme())
+    widget = qwelcomewindow.QWelcomeWidget(app_name="Your app name",
+        app_icon:QIcon("Your_AppIcon.png"),
+        color_scheme=qwelcomewindow.ColorScheme())
 
     # add a recent action
     widget.add_action(qwelcomewindow.QWelcomeWidget.ActionType.Recent,
