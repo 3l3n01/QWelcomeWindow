@@ -1,7 +1,7 @@
 QWelcomeWindow
 ---------------------
 
-A generic welcome window for PySide applications.
+A generic welcome window for PySide and PyQt applications.
 
 It display a list of recent files/documents and a list of quick start actions 
 (icons associated with a text).
@@ -66,6 +66,23 @@ Here is an example sample code::
 
     # add the widget to your ui, for example:
     self.ui.stackedWidget.insertWidget(0, widget)
+
+
+PyQt note
+----------
+
+QWelcomeWindow requires **QString and QVariant API v2**. If you are using PyQt, **import qwelcomewindow before any other 
+PyQt modules** or setup the sip api yourself before importing qwelcomewindow.
+
+
+Forcing a specific Qt bindings
+------------------------------------
+
+There are two ways to select a specific qt bindings:
+
+  * import PySide or import PyQt4 before import QWelcomeWindow
+  * append ["--pyside"] or ["--pyqt"] to sys.argv
+
 
 
 
