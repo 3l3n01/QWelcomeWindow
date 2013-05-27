@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# QWelcomeWidget - An easy to customize welcome window
+# QWelcomeWindow - An easy to customize welcome window
 
 # Copyright 2013, Colin Duquesnoy <colin.duquesnoy@gmail.com>
 #
@@ -16,10 +16,10 @@ from setuptools import setup
 
 setup(
     name='QWelcomeWindow',
-    version='1.0',
-    packages=['qwelcomewindow'],
+    version='1.1',
+    packages=['qwelcomewindow', 'qwelcomewindow.qt'],
     package_data={'qwelcomewindow': ["*.ui"]},
-    url='https://github.com/ColinDuquesnoy/QWelcomeWidget',
+    url='https://github.com/ColinDuquesnoy/QWelcomeWindow',
     license='LGPL v3',
     author='Colin Duquesnoy',
     author_email='colin.duquesnoy@gmail.com',
