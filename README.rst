@@ -1,6 +1,8 @@
 QWelcomeWindow
 ---------------------
 
+*1.1*
+
 A generic welcome window for PySide and PyQt applications.
 
 It display a list of recent files/documents and a list of quick start actions 
