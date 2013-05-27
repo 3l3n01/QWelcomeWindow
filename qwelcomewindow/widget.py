@@ -259,7 +259,6 @@ class QWelcomeWidget(QtGui.QWidget):
     @QtCore.Slot(QtGui.QListWidgetItem)
     def on_lwQuickStart_itemClicked(self, item):
         self.ui.lwRecents.clearSelection()
-        print "Emit quick start action"
         self.quick_start_action_triggered.emit(item.text())
 
 
