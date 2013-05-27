@@ -12,9 +12,9 @@
 """
 Main module: define the welcome window widget.
 """
+import os
 import sys
-import widget_ui
-from PySide import QtCore, QtGui
+from qwelcomewindow.qt import QtGui, QtCore
 
 
 class ColorScheme(object):
@@ -178,8 +178,14 @@ class QWelcomeWidget(QtGui.QWidget):
                              stylesheet
         """
         QtGui.QWidget.__init__(self)
-        self.ui = widget_ui.Ui_Form()
-        self.ui.setupUi(self)
+        if os.environ["QT_API"] == "pyside":
+            from qwelcomewindow import pyside_widget_ui
+            self.ui = pyside_widget_ui.Ui_Form()
+            self.ui.setupUi(self)
+        else:
+            from qwelcomewindow import pyqt_widget_ui
+            self.ui = pyqt_widget_ui.Ui_Form()
+            self.ui.setupUi(self)
         self.set_color_scheme(color_scheme)
         self.set_app_icon(app_icon)
         self.set_app_name(app_name)
@@ -253,6 +259,7 @@ class QWelcomeWidget(QtGui.QWidget):
     @QtCore.Slot(QtGui.QListWidgetItem)
     def on_lwQuickStart_itemClicked(self, item):
         self.ui.lwRecents.clearSelection()
+        print "Emit quick start action"
         self.quick_start_action_triggered.emit(item.text())
 
 
