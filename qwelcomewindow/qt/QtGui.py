@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# QWelcomeWidget - An easy to customize welcome window
+# QWelcomeWindow - An easy to customize welcome window
 
 # Copyright 2013, Colin Duquesnoy <colin.duquesnoy@gmail.com>
 #
