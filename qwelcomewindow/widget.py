@@ -76,7 +76,7 @@ QWidget
     color: %(text_color)s;
 }
 
-QFrame
+#frameRecents, #framequickStart, #lblInfoText
 {
     border: 1px solid %(border_color)s;
 }
@@ -113,13 +113,16 @@ QListView::item:hover
     background: %(hover_color)s;
 }
 
-QLabel
-{
+QLabel {
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 3px;
     padding-right: 0px;
     border: none;
+}
+
+#lblRecents, #lblQuickStart, #lblTitle, #lblIcon
+{
     background-color: %(title_background_color)s;
 };
 """
@@ -150,7 +153,7 @@ class QWelcomeWidget(QtGui.QWidget):
         QuickStart = 1
 
     # signal emitted when a quick start action is triggered
-    quick_start_action_triggered = QtCore.Signal(str)
+    quick_start_action_triggered = QtCore.Signal(str, str)
     # signal emitted when a recent action is triggered
     recent_action_triggered = QtCore.Signal(str, str)
 
@@ -209,6 +212,9 @@ class QWelcomeWidget(QtGui.QWidget):
             "hover_color": color_scheme.hover_color}
         self.setStyleSheet(stylesheet)
 
+    def set_info_text(self, info_text):
+        self.ui.lblInfoText.setText(info_text)
+
     def add_action(self, action_type, action_txt, action_icon=None, data=None):
         """
         Adds an action to one of the two list widgets (recent or quick start
@@ -259,7 +265,7 @@ class QWelcomeWidget(QtGui.QWidget):
     @QtCore.Slot(QtGui.QListWidgetItem)
     def on_lwQuickStart_itemClicked(self, item):
         self.ui.lwRecents.clearSelection()
-        self.quick_start_action_triggered.emit(item.text())
+        self.quick_start_action_triggered.emit(item.text(), item.data(32))
 
 
 #///////////////////////////////////////////////////////////////////////////////

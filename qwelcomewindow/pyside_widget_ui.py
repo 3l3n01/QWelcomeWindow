@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'widget.ui'
 #
-# Created: Mon Apr  1 00:05:13 2013
-#      by: pyside-uic 0.2.13 running on PySide 1.1.1
+# Created: Sat Dec 27 21:43:55 2014
+#      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,7 +12,8 @@ from PySide import QtCore, QtGui
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(842, 513)
+        Form.resize(842, 545)
+        Form.setStyleSheet("")
         self.gridLayout = QtGui.QGridLayout(Form)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setSpacing(0)
@@ -39,7 +40,21 @@ class Ui_Form(object):
         self.horizontalLayoutMain.setSpacing(0)
         self.horizontalLayoutMain.setContentsMargins(9, 9, 9, 9)
         self.horizontalLayoutMain.setObjectName("horizontalLayoutMain")
-        self.frameRecents = QtGui.QFrame(Form)
+        self.frame = QtGui.QFrame(Form)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy)
+        self.frame.setMinimumSize(QtCore.QSize(60, 60))
+        self.frame.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.verticalLayout_11 = QtGui.QVBoxLayout(self.frame)
+        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.verticalLayout_10 = QtGui.QVBoxLayout()
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.frameRecents = QtGui.QFrame(self.frame)
         self.frameRecents.setFrameShape(QtGui.QFrame.StyledPanel)
         self.frameRecents.setFrameShadow(QtGui.QFrame.Raised)
         self.frameRecents.setObjectName("frameRecents")
@@ -56,7 +71,7 @@ class Ui_Form(object):
         self.lblRecents.setObjectName("lblRecents")
         self.verticalLayout_2.addWidget(self.lblRecents)
         self.lwRecents = QtGui.QListWidget(self.frameRecents)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Expanding)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lwRecents.sizePolicy().hasHeightForWidth())
@@ -66,10 +81,10 @@ class Ui_Form(object):
         self.lwRecents.setObjectName("lwRecents")
         self.verticalLayout_2.addWidget(self.lwRecents)
         self.verticalLayout_4.addLayout(self.verticalLayout_2)
-        self.horizontalLayoutMain.addWidget(self.frameRecents)
-        spacerItem = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayoutMain.addItem(spacerItem)
-        self.framequickStart = QtGui.QFrame(Form)
+        self.verticalLayout_10.addWidget(self.frameRecents)
+        spacerItem = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        self.verticalLayout_10.addItem(spacerItem)
+        self.framequickStart = QtGui.QFrame(self.frame)
         self.framequickStart.setFrameShape(QtGui.QFrame.StyledPanel)
         self.framequickStart.setFrameShadow(QtGui.QFrame.Raised)
         self.framequickStart.setObjectName("framequickStart")
@@ -90,7 +105,32 @@ class Ui_Form(object):
         self.lwQuickStart.setObjectName("lwQuickStart")
         self.verticalLayoutQuickStart.addWidget(self.lwQuickStart)
         self.verticalLayout_5.addLayout(self.verticalLayoutQuickStart)
-        self.horizontalLayoutMain.addWidget(self.framequickStart)
+        self.verticalLayout_10.addWidget(self.framequickStart)
+        self.verticalLayout_11.addLayout(self.verticalLayout_10)
+        self.horizontalLayoutMain.addWidget(self.frame)
+        spacerItem1 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayoutMain.addItem(spacerItem1)
+        self.frame_2 = QtGui.QFrame(Form)
+        self.frame_2.setMinimumSize(QtCore.QSize(60, 60))
+        self.frame_2.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.verticalLayout_13 = QtGui.QVBoxLayout(self.frame_2)
+        self.verticalLayout_13.setObjectName("verticalLayout_13")
+        self.verticalLayout_12 = QtGui.QVBoxLayout()
+        self.verticalLayout_12.setObjectName("verticalLayout_12")
+        self.lblInfoText = QtGui.QLabel(self.frame_2)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lblInfoText.sizePolicy().hasHeightForWidth())
+        self.lblInfoText.setSizePolicy(sizePolicy)
+        self.lblInfoText.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.lblInfoText.setWordWrap(True)
+        self.lblInfoText.setObjectName("lblInfoText")
+        self.verticalLayout_12.addWidget(self.lblInfoText)
+        self.verticalLayout_13.addLayout(self.verticalLayout_12)
+        self.horizontalLayoutMain.addWidget(self.frame_2)
         self.gridLayout.addLayout(self.horizontalLayoutMain, 1, 0, 1, 1)
 
         self.retranslateUi(Form)
@@ -101,4 +141,5 @@ class Ui_Form(object):
         self.lblTitle.setText(QtGui.QApplication.translate("Form", "<html><head/><body><p><span style=\" font-size:20pt;\">Welcome to %s</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.lblRecents.setText(QtGui.QApplication.translate("Form", "Recents", None, QtGui.QApplication.UnicodeUTF8))
         self.lblQuickStart.setText(QtGui.QApplication.translate("Form", "Quick start Actions", None, QtGui.QApplication.UnicodeUTF8))
+        self.lblInfoText.setText(QtGui.QApplication.translate("Form", "<html><head/><body><p>Intro text</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
 
