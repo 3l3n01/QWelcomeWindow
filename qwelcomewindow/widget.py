@@ -237,7 +237,7 @@ class QWelcomeWidget(QtGui.QWidget):
             item.setIcon(action_icon)
         if data:
             item.setData(32, data)
-            item.setData(3, data)
+            #item.setData(3, data)
         item.setData(0, action_txt)
         if action_type == self.ActionType.QuickStart:
             self.ui.lwQuickStart.addItem(item)
