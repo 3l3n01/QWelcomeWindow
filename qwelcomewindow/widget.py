@@ -76,6 +76,9 @@ QWidget
     color: %(text_color)s;
 }
 
+#frame, #frame_2 {
+border: none;
+}
 #frameRecents, #framequickStart, #lblInfoText
 {
     border: 1px solid %(border_color)s;
